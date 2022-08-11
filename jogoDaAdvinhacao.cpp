@@ -8,12 +8,17 @@ int main() {
     cout << endl;
 
     const int NUMERO_SECRETO = 42;
-    bool acertou;
+
     int chute;
+    int tentativas = 0;
+
+    bool acertou;
     bool menorQueNumeroSecreto;
     bool maiorQueNumeroSecreto;
 
     while (!acertou) {
+        tentativas++;
+        cout << "Tentativa: " << tentativas << endl;
         cout << "Qual o seu chute: ";
         cin >> chute;
         cout << endl;
@@ -31,10 +36,11 @@ int main() {
         } else if (menorQueNumeroSecreto) {
             cout << "Seu chute foi menor que o numero secreto!" << endl;
         } else {
-            cout << "Digite um valor válido" << endl;
+            cout << "Digite um valor válido!" << endl;
         }
         cout << endl;
     }
 
-    cout << "FIM!!!" << endl;
+    cout << "FIM!!!" << endl << endl;
+    cout << "Voce acertou em " << tentativas << " Tentativas!" << endl << endl;
 }
