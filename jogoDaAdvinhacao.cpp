@@ -7,24 +7,34 @@ int main() {
     cout << "******************************************" << endl;
     cout << endl;
 
-    int numeroSecreto = 42;
-
-    cout << "O numero secreto e " << numeroSecreto << ". Nao conte para ninguem!" << endl << endl;
-
+    const int NUMERO_SECRETO = 42;
+    bool acertou;
     int chute;
+    bool menorQueNumeroSecreto;
+    bool maiorQueNumeroSecreto;
 
-    cout << "Qual o seu chute: ";
-    cin >> chute;
+    while (!acertou) {
+        cout << "Qual o seu chute: ";
+        cin >> chute;
+        cout << endl;
 
-    cout << "O valor de seu chute e " << chute << "!" << endl;
+        cout << "O valor de seu chute e " << chute << "!" << endl << endl;
 
-    if (chute == numeroSecreto) {
-        cout << "Parabens! Voce acertou o numero secreto!" << endl;
-    } else if (chute > numeroSecreto) {
-        cout << "Seu chute foi maior que o numero secreto!" << endl;
-    } else if (chute < numeroSecreto) {
-        cout << "Seu chute foi menor que o numero secreto!" << endl;
-    } else {
-        cout << "Digite um valor válido" << endl;
+        acertou = chute == NUMERO_SECRETO;
+        maiorQueNumeroSecreto = chute > NUMERO_SECRETO;
+        menorQueNumeroSecreto = chute < NUMERO_SECRETO;
+
+        if (acertou) {
+            cout << "Parabens! Voce acertou o numero secreto!" << endl;
+        } else if (maiorQueNumeroSecreto) {
+            cout << "Seu chute foi maior que o numero secreto!" << endl;
+        } else if (menorQueNumeroSecreto) {
+            cout << "Seu chute foi menor que o numero secreto!" << endl;
+        } else {
+            cout << "Digite um valor válido" << endl;
+        }
+        cout << endl;
     }
+
+    cout << "FIM!!!" << endl;
 }
