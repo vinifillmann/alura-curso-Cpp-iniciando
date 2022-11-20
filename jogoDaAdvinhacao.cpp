@@ -7,12 +7,19 @@ int main() {
     cout << "******************************************" << endl;
     cout << endl;
 
+    cout << "Escolha o seu nivel de dificuldade: " << endl;
+    cout << "Facil (F), Medio (M) ou Dificil (D)" << endl;
+
+    char opcao;
+
     const int NUMERO_SECRETO = 42;
 
     int chute;
     int tentativas = 0;
 
-    bool acertou;
+    double pontos = 1000;
+
+    bool acertou = false;
     bool menorQueNumeroSecreto;
     bool maiorQueNumeroSecreto;
 
@@ -22,6 +29,10 @@ int main() {
         cout << "Qual o seu chute: ";
         cin >> chute;
         cout << endl;
+
+        double pontos_perdidos = (double) abs((chute - NUMERO_SECRETO)) / 2;
+        
+        pontos -= pontos_perdidos;
 
         cout << "O valor de seu chute e " << chute << "!" << endl << endl;
 
@@ -43,4 +54,7 @@ int main() {
 
     cout << "FIM!!!" << endl << endl;
     cout << "Voce acertou em " << tentativas << " Tentativas!" << endl << endl;
+    cout.precision(2);
+    cout << fixed;
+    cout << "Voce pontuou " << pontos << " pontos!" << endl;
 }
