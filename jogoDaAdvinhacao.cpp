@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
 int main() {
@@ -10,9 +12,37 @@ int main() {
     cout << "Escolha o seu nivel de dificuldade: " << endl;
     cout << "Facil (F), Medio (M) ou Dificil (D)" << endl;
 
-    char opcao;
+    int tentativas_limite = 0;
 
-    const int NUMERO_SECRETO = 42;
+    char dificuldade;
+
+    while (true) {
+        cout << "Escolha alguma opcao:";
+        cin >> dificuldade;
+        dificuldade = toupper(dificuldade);
+        switch (dificuldade) {
+        case 'F':
+            tentativas_limite = 15;
+            break;
+
+        case 'M':
+            tentativas_limite = 10;
+            break;
+
+        case 'D':
+            tentativas_limite = 5;
+            break;
+        
+        default:
+            cout << "Digite Uma opcao valida!!!" << endl;
+        }
+        if (tentativas_limite) {
+            break;
+        }
+    }
+
+    srand(time(NULL));
+    const int NUMERO_SECRETO = rand() % 100;
 
     int chute;
     int tentativas = 0;
@@ -23,8 +53,7 @@ int main() {
     bool menorQueNumeroSecreto;
     bool maiorQueNumeroSecreto;
 
-    while (!acertou) {
-        tentativas++;
+    for (tentativas = 1; tentativas <= tentativas_limite; tentativas++) {
         cout << "Tentativa: " << tentativas << endl;
         cout << "Qual o seu chute: ";
         cin >> chute;
@@ -42,6 +71,7 @@ int main() {
 
         if (acertou) {
             cout << "Parabens! Voce acertou o numero secreto!" << endl;
+            break;
         } else if (maiorQueNumeroSecreto) {
             cout << "Seu chute foi maior que o numero secreto!" << endl;
         } else if (menorQueNumeroSecreto) {
@@ -53,8 +83,12 @@ int main() {
     }
 
     cout << "FIM!!!" << endl << endl;
-    cout << "Voce acertou em " << tentativas << " Tentativas!" << endl << endl;
-    cout.precision(2);
-    cout << fixed;
-    cout << "Voce pontuou " << pontos << " pontos!" << endl;
+    if (!acertou) {
+        cout << "Voce perdeu! Tente novamente" << endl;
+    } else {
+        cout << "Voce acertou em " << tentativas << " Tentativas!" << endl << endl;
+        cout.precision(2);
+        cout << fixed;
+        cout << "Voce pontuou " << pontos << " pontos!" << endl;
+    }
 }
