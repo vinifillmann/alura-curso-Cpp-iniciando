@@ -152,11 +152,13 @@ void update_archive(vector<string> new_list)
     ofstream arquivo;
     arquivo.open("palavras.txt");
 
-    if (!arquivo.is_open()) {
+    if (!arquivo.is_open())
+    {
         error_with_archive();
     }
     arquivo << new_list.size() << endl;
-    for (string word : new_list) {
+    for (string word : new_list)
+    {
         arquivo << word << endl;
     }
     arquivo.close();
@@ -191,8 +193,7 @@ int main()
         input_and_procces_user_try();
     }
 
-    cout << endl
-         << "Fim de jogo!" << endl;
+    cout << endl << "Fim de jogo!" << endl;
 
     cout << "A palavra secreta era: " << palavra_secreta << endl;
 
